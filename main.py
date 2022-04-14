@@ -10,7 +10,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
-from BoxReg import get_corners, rotate_crop
+from CornerReg import get_corners, rotate_crop
 
 
 r_thresh = 0.05     # threshold for the edges (default 5%)

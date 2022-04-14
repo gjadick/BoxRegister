@@ -13,15 +13,15 @@ from PIL import Image
 from CornerReg import get_corners, rotate_crop
 
 
-r_thresh = 0.5      # threshold for the edges (default 5%)
-fdir = './films'    # path to the images 
-fext = '.tif'       # file extension for the images
-plot_check = True   # whether to plot original vs. final images
+r_thresh = 0.5       # threshold for the edges (default 50%)
+f_dir = './films'    # path to the images 
+f_ext = '.tif'       # file extension for the images
+plot_check = True    # whether to plot original vs. final images
 
 
 if __name__ == '__main__':
 
-    files = [os.path.join(fdir, fname) for fname in os.listdir(fdir) if fext in fname]
+    files = [os.path.join(f_dir, fname) for fname in os.listdir(f_dir) if f_ext in fname]
     
     films = []
     for fname in files:

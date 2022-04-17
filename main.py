@@ -32,16 +32,16 @@ def get_films(f_dir, f_ext, r_thresh, plot_check):
 
     '''
     
-    files = [os.path.join(f_dir, fname) for fname in os.listdir(f_dir) if f_ext in fname]
+    files = sorted([os.path.join(f_dir, fname) for fname in os.listdir(f_dir) if f_ext in fname])
     
     films = []
     for fname in files:
         print(fname)
     
-        # open image
+        # open image, use red channel only
         img = Image.open(fname)
-        arr = np.mean(np.asarray(img), axis=2)/2.55  # 0 to 100
-    
+        arr = np.asarray(img)[:,:,0]/2.55  # rescale 0-255 -> 0-100
+        
         # process image
         xc, yc = get_corners(img, r_thresh, show_plot=False)  # x,y corner coordinates
         arr_final = rotate_crop(img, xc, yc)                  # rotated + cropped array

@@ -23,9 +23,9 @@ def get_corners(img, r_thresh, c_edge=3, show_plot=True):
                to remove edge detection from image bounds.
      - show_plot: bool, whether to plot result.
     '''
-    arr = np.mean(np.asarray(img), axis=2)  # 0 to 255
-    arr /= 2.55  # 0 to 100
-    
+    #arr = np.mean(np.asarray(img), axis=2)  # 0 to 255
+    arr = np.asarray(img)[:,:,0]/2.55  # 0 to 100
+
     sobel_y = np.array([[-1,-2,-3,-2,-1],
                         [ 0, 0, 0, 0, 0],
                         [ 1, 2, 3, 2, 1]])
@@ -89,8 +89,8 @@ def rotate_crop(img, xcorners, ycorners):
     theta_rad = theta*np.pi/180.0
 
     # rotate about center, convert to np object
-    arr_rot = np.mean(np.asarray(img.rotate(theta)),axis=2)
-    arr_rot /= 2.55  # 0 to 100
+    #arr_rot = np.mean(np.asarray(img.rotate(theta)),axis=2)
+    arr_rot = np.asarray(img.rotate(theta))[:,:,0] # red channel, 0 to 255
     Ny, Nx = arr_rot.shape
     
     # get rotated corners

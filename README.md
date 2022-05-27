@@ -1,4 +1,4 @@
-# CornerRegister
+# Corner Register
 
 A Python framework to register scanned films.
 
